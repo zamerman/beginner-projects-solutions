@@ -1,5 +1,5 @@
 # Introduction
-This is a set of projects which I used to familiarize myself with different languages by attempting them with each language.
+Solutions to the projects provided by Jorge Gonzalez.
 
 # Project List
 - 99 Bottles
