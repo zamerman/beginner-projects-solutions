@@ -12,4 +12,8 @@ sides.append(int(input(text_dictionary['prompt'].format('x'))))
 sides.append(int(input(text_dictionary['prompt'].format('y'))))
 sides.append(int(input(text_dictionary['prompt'].format('z'))))
 
-print(sides)
+squared_sides = []
+for side in sides:
+    squared_sides.append(side**2)
+
+print(squared_sides)
