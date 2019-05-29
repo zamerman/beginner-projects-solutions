@@ -6,6 +6,7 @@ Solutions to the projects provided by Jorge Gonzalez.
 - Magic 8 Ball
 - Pythagorean Triples Checker
 - Rock Paper Scissors Game
+- Coin Estimator By Weight
 
 # Credits
 These project ideas come from [Jorge Gonzalez](https://github.com/jorgegonzalez/beginner-projects)
