@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/env/bash python
 
 class BeerOnTheWall:
     """A class which tells you how much beer is on the wall"""
