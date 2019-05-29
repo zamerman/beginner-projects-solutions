@@ -19,7 +19,6 @@ def getSides():
         return getSides()
 
 
-
 def checkSides(sides):
     sq_sides = []
 
