@@ -3,38 +3,61 @@ import json
 
 text_path = "./json/text.json"
 text_file = open(text_path, "r")
-text_dictionary = json.load(text_file)
+text = json.load(text_file)
 
-play = True
-while play:
-    print(text_dictionary['name'])
-
+def getSides():
     sides = []
-    sides.append(int(input(text_dictionary['prompt'].format('x'))))
-    sides.append(int(input(text_dictionary['prompt'].format('y'))))
-    sides.append(int(input(text_dictionary['prompt'].format('z'))))
+    try:
+        sides.append(float(input(text['prompt'].format('x'))))
+        sides.append(float(input(text['prompt'].format('x'))))
+        sides.append(float(input(text['prompt'].format('x'))))
 
+        return sides
+
+    except ValueError:
+        print(text['value error'])
+        return getSides()
+
+
+
+def checkSides(sides):
     sq_sides = []
+
     for side in sides:
         sq_sides.append(side**2)
 
-    triple = False
     if sq_sides[0] + sq_sides[1] == sq_sides[2]:
-        triple = True
+        print(text['true'])
     elif sq_sides[0] + sq_sides[2] == sq_sides[1]:
-        triple = True
+        print(text['true'])
     elif sq_sides[0] == sq_sides[1] + sq_sides[2]:
-        triple = True
-
-    if triple:
-        print(text_dictionary['true'])
+        print(text['true'])
     else:
-        print(text_dictionary['false'])
+        print(text['false'])
 
-    redo = ""
-    while (redo != 'r') and (redo != 'q'):
-        print(text_dictionary['try again'])
-        redo = input()
 
-    if redo == 'q':
-        play = False
+def tryAgain():
+    response = input(text['try again'])
+
+    if response == 'y':
+        return True
+    elif response == 'n':
+        return False
+    else:
+        print(text['play again error'])
+        return tryAgain()
+
+
+def play():
+    print(text['name'])
+
+    sides = getSides()
+
+    checkSides(sides)
+
+    if tryAgain():
+        play()
+
+
+if __name__ == '__main__':
+    play()

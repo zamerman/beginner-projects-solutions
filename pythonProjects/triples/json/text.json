@@ -1,5 +1,7 @@
-{"name":"Pythagorean Triples Checker",
+{"name":"\nPythagorean Triples Checker",
 "prompt":"Side {0}: ",
-"true":"The triangle is a Pythagorean Triple.",
-"false":"The triangle is not a Pythagorean Triple.",
-"try again":"To start over type r, to quit type q"}
+"true":"\nThe triangle is a Pythagorean Triple.",
+"false":"\nThe triangle is not a Pythagorean Triple.",
+"try again":"Try Again? (y, n): ",
+"play again error":"You must enter y or n!",
+"value error":"The length of the triangles side must be a number!"}
