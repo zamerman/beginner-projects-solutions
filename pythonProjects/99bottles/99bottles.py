@@ -1,59 +1,20 @@
 #!/usr/env/bash python
 
-class BeerOnTheWall:
-    """A class which tells you how much beer is on the wall"""
-    def __init__(self, beer):
-        self.__beer = beer
+verse = "{} of beer on the wall, {} of beer.\nTake one down, pass it around, {} of beer on the wall."
+end_verse = "No more bottles of beer on the wall, no more bottles of beer.\nGo to the stare and by some more, {} of beer on the wall."
 
-    def howMuchBeer(self):
-        return self.__beer
-
-    def howManyBottles(self):
-        return TopLyrics(self.__beer)
-
-    def takeOneDown(self):
-        self.__beer -= 1
-        return BottomLyrics(self.__beer)
-
-
-def howManyBottles(beer):
-    commonLyrics = "{0} bottles of beer"
-    singularLyrics = "{0} bottle of beer"
-
-    lyrics = ""
-
-    if beer == 1:
-        lyrics += singularLyrics.format(beer)
+def bottles(n):
+    if n == 1:
+        return "{} bottle".format(n)
     else:
-        lyrics += commonLyrics.format(beer)
+        return "{} bottles".format(n)
 
-    return lyrics
-
-
-def TopLyrics(beer):
-    lyrics = ""
-
-    lyrics += howManyBottles(beer) + " on the wall, "
-    lyrics += howManyBottles(beer) + ","
-
-    return lyrics
-
-
-def BottomLyrics(beer):
-    lyrics = ""
-
-    lyrics += "take one down, pass it around, "
-    lyrics += howManyBottles(beer) + " on the wall.\n"
-
-    return lyrics
-
-
-def main():
-    beer = BeerOnTheWall(99)
-    while beer.howMuchBeer() > 0:
-        print(beer.howManyBottles())
-        print(beer.takeOneDown())
-
+def lyrics(n):
+    if n == 0:
+        print(end_verse.format(99))
+    else:
+        print(verse.format(bottles(n), bottles(n), bottles(n - 1))
+        lyrics(n - 1)
 
 if __name__ == "__main__":
-    main()
+    lyrics()
