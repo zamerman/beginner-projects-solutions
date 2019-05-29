@@ -1,0 +1,22 @@
+{
+    "coin_weights": {
+        "g": {
+            "pennies": 2.50,
+            "nickels": 5,
+            "dimes": 2.268,
+            "quarters": 5.67
+            },
+        "lb": {
+            "pennies": 5.51e-3,
+            "nickels": 1.10e-2,
+            "dimes": 5.0e-3,
+            "quarters": 1.25e-2
+            }
+    },
+    "coin_wrappers": {
+        "pennies": 50,
+        "nickels": 40,
+        "dimes": 50,
+        "quarters": 40
+    }
+}
