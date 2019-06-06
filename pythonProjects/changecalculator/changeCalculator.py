@@ -1,12 +1,20 @@
 from coins import Coins
-import sys
 
 returnForm = "\nChange: {}\n\nQuarters: {}\nDimes: {}\nNickels: {}\nPennies: {}"
 
-
 def getInput():
-    return input("Change/Payment,Price:")
+    return input("float Change/float Payment,Price/str q:")
 
+def parseResponse(inputString):
+    if str(inputString).find(',') == -1:
+        change = float(inputString)
+        return change
+    else:
+        payment, price = str(inputString).split(',')
+        payment = float(payment)
+        price = float(price)
+        change = payment - price
+        return change
 
 def calculateChange(change):
     '''Calculates the coins for the change and returns it as an object of the
@@ -38,12 +46,16 @@ def calculateChange(change):
 def main():
     print("\nChange Calculator")
     inputString = str(getInput())
-    change = calculateChange(args)
-    print(returnForm.format(args,
-                            change.getQ(),
-                            change.getD(),
-                            change.getN(),
-                            change.getP()))
+    if inputString == 'q':
+        return
+    change = parseResponse(inputString)
+    coins = calculateChange(change)
+    print(returnForm.format(str(change),
+                            coins.getQ(),
+                            coins.getD(),
+                            coins.getN(),
+                            coins.getP()))
+    main()
 
 
 main()
