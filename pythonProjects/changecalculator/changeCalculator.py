@@ -26,19 +26,21 @@ def calculateChange(change):
 
     coins = Coins()
 
-    while change > 0:
-        if change > 0.25:
-            coins.incQ()
-            change -= 0.25
-        elif change > 0.10:
-            coins.incD()
-            change -= 0.10
-        elif change > 0.05:
-            coins.incN()
-            change -= 0.05
-        else:
-            coins.incP()
-            change -= 0.01
+    while change >= 0.25:
+        coins.incQ()
+        change = round(change - 0.25, 2)
+
+    while change >= 0.1:
+        coins.incD()
+        change = round(change - 0.1, 2)
+
+    while change >= 0.05:
+        coins.incN()
+        change = round(change - 0.05, 2)
+
+    while change >= 0.01:
+        coins.incD()
+        change = round(change - 0.01, 2)
 
     return coins
 
