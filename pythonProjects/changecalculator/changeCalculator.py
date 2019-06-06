@@ -49,33 +49,36 @@ def calculateChange(change):
 
     coins = Coins()
 
-    while change >= 0.25:
-        coins.incQ()
-        change = round(change - 0.25, 2)
-
-    while change >= 0.1:
-        coins.incD()
-        change = round(change - 0.1, 2)
-
-    while change >= 0.05:
-        coins.incN()
-        change = round(change - 0.05, 2)
-
-    while change >= 0.01:
-        coins.incD()
-        change = round(change - 0.01, 2)
+    while change > 0:
+        if change >= 0.25:
+            coins.incQ()
+            change = round(change - 0.25, 2)
+        elif change >= 0.1:
+            coins.incD()
+            change = round(change - 0.1, 2)
+        elif change >= 0.05:
+            coins.incN()
+            change = round(change - 0.05, 2)
+        else:
+            coins.incP()
+            change = round(change - 0.01, 2)
 
     return coins
 
 
+def convertDollars(floatChange):
+    string = str(floatChange)
+    if checkDecimal(string):
+        return "$" + string
+    else:
+        return "$" + string + "0"
+
+
 def main():
     print("\nChange Calculator")
-    inputString = str(getInput())
-    if inputString == 'q':
-        return
-    change = parseResponse(inputString)
+    change = getChange()
     coins = calculateChange(change)
-    print(returnForm.format(str(change),
+    print(returnForm.format(convertDollars(change),
                             coins.getQ(),
                             coins.getD(),
                             coins.getN(),
