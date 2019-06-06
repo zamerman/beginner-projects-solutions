@@ -2,19 +2,42 @@ from coins import Coins
 
 returnForm = "\nChange: {}\n\nQuarters: {}\nDimes: {}\nNickels: {}\nPennies: {}"
 
-def getInput():
-    return input("float Change/float Payment,Price/str q:")
+def getChange():
+    response = input("float Change/float Payment,float Price/str q:")
 
-def parseResponse(inputString):
-    if str(inputString).find(',') == -1:
-        change = float(inputString)
-        return change
+    if response == 'q':
+        exit()
+
+    if response.find(',') == -1:
+        response = response
     else:
-        payment, price = str(inputString).split(',')
-        payment = float(payment)
-        price = float(price)
-        change = payment - price
-        return change
+        response = response.split(',')
+
+    if isinstance(response, list):
+        if False in [checkDecimal(item) for item in response]:
+            print("Responses must have two decimal places")
+            return getChange()
+        else:
+            response = round(float(response[0]) - float(response[1]), 2)
+            return response
+    else:
+        if not checkDecimal(response):
+            print("Response must have two decimal places")
+            return getChange()
+        else:
+            return float(response)
+
+
+def checkDecimal(string):
+    if string.count('.') == 0 or string.count('.') > 1:
+        return False
+    else:
+        decimalPlaces = string[string.find('.'):]
+        if len(decimalPlaces) == 3:
+            return True
+        else:
+            return False
+
 
 def calculateChange(change):
     '''Calculates the coins for the change and returns it as an object of the
